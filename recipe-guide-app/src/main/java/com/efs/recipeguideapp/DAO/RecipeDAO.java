@@ -60,10 +60,48 @@ public class RecipeDAO {
     }
 
     public void updateRecipe(Recipe recipe) {
-        // Implementation for updating a recipe in the database
+        String sql = "UPDATE recipes SET RecipeName = ?, Category = ?, PreparationTime = ?, Instructions = ? WHERE RecipeID = ?";
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, recipe.getRecipeName());
+            preparedStatement.setString(2, recipe.getCategory());
+            preparedStatement.setInt(3, recipe.getPreparationTime());
+            preparedStatement.setString(4, recipe.getInstructions());
+            preparedStatement.setInt(5, recipe.getRecipeID());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Recipe updated successfully.");
+            } else {
+                System.out.println("No recipe found with the given RecipeID.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error updating recipe: " + e.getMessage());
+        }
     }
 
-    public void deleteRecipe(int recipeID) {
-        // Implementation for deleting a recipe from the database
-    }
+
+//    public void deleteRecipe(int recipeID) {
+//        String sql = "DELETE FROM recipes WHERE RecipeID = ?";
+//
+//        try (Connection connection = dbConnection.connect();
+//             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+//
+//            preparedStatement.setInt(1, recipeID);
+//
+//            int rowsAffected = preparedStatement.executeUpdate();
+//            if (rowsAffected > 0) {
+//                System.out.println("Recipe deleted successfully.");
+//            } else {
+//                System.out.println("No recipe found with the given RecipeID.");
+//            }
+//
+//        } catch (SQLException e) {
+//            System.out.println("Error deleting recipe: " + e.getMessage());
+//        }
+//    }
+
 }

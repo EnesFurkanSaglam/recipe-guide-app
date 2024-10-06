@@ -33,14 +33,28 @@ public class HelloApplication extends Application {
         RecipeService recipeService = new RecipeService(recipeDAO);
 
 
-        Recipe newRecipe = new Recipe("hmmmmmmmmmmm", "Dinner", 30, "Boil pasta, add sauce.");
-        recipeService.addRecipe(newRecipe);
+//        -----Add--------
+//        Recipe newRecipe = new Recipe("hmmmmmmmmmmm", "Dinner", 30, "Boil pasta, add sauce.");
+//        recipeService.addRecipe(newRecipe);
 
-        List<Recipe> recipes = recipeService.getAllRecipes();
 
-        for (Recipe a : recipes){
-            System.out.println(a.getRecipeID()+a.getRecipeName());
-        }
+//  ---------List---------
+//        List<Recipe> recipes = recipeService.getAllRecipes();
+//
+//        for (Recipe a : recipes){
+//            System.out.println(a.getRecipeID()+a.getRecipeName());
+//        }
+
+
+
+//         -------Update------------
+//        for (Recipe a : recipes){
+//            if (a.getRecipeID() == 13){
+//                Recipe recipe = new Recipe(a.getRecipeID(),"qqqqqqqqqqqqqqqqqqqqqqqqqqqq","asdas",12,"fafas");
+//                recipeService.updateRecipe(recipe);
+//            }
+//        }
+
 
 
 //         launch();
