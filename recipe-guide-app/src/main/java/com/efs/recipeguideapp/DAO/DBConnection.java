@@ -1,4 +1,4 @@
-package com.efs.recipeguideapp.Database;
+package com.efs.recipeguideapp.DAO;
 
 
 
@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DatabaseConnection {
+public class DBConnection {
         private String url = "jdbc:mysql://localhost:3306/recipe-guide-app";
         private String user = "root";
         private String password = "root";

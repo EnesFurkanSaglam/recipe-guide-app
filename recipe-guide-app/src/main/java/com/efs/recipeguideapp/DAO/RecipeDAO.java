@@ -1,0 +1,69 @@
+package com.efs.recipeguideapp.DAO;
+
+import com.efs.recipeguideapp.Entity.Recipe;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class RecipeDAO {
+
+    private DBConnection dbConnection;
+
+    public RecipeDAO() {
+        dbConnection = new DBConnection();
+    }
+
+    public void addRecipe(Recipe recipe) {
+        String sql = "INSERT INTO recipes (RecipeName, Category, PreparationTime, Instructions) VALUES (?,?,?,?)";
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, recipe.getRecipeName());
+            preparedStatement.setString(2, recipe.getCategory());
+            preparedStatement.setInt(3, recipe.getPreparationTime());
+            preparedStatement.setString(4, recipe.getInstructions());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println(rowsAffected + " recipe added");
+
+        } catch (SQLException e) {
+            System.out.println("Error adding recipe: " + e.getMessage());
+        }
+    }
+
+    public List<Recipe> getAllRecipes() {
+        List<Recipe> recipeList = new ArrayList<>();
+        String sql = "SELECT * FROM recipes";
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                int recipeID = resultSet.getInt("RecipeID");
+                String recipeName = resultSet.getString("RecipeName");
+                String category = resultSet.getString("Category");
+                int preparationTime = resultSet.getInt("PreparationTime");
+                String instructions = resultSet.getString("Instructions");
+
+                Recipe recipe = new Recipe(recipeID, recipeName, category, preparationTime, instructions);
+                recipeList.add(recipe);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error fetching recipes: " + e.getMessage());
+        }
+
+        return recipeList;
+    }
+
+    public void updateRecipe(Recipe recipe) {
+        // Implementation for updating a recipe in the database
+    }
+
+    public void deleteRecipe(int recipeID) {
+        // Implementation for deleting a recipe from the database
+    }
+}

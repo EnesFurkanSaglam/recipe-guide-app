@@ -6,8 +6,9 @@ module com.efs.recipeguideapp {
 
     opens com.efs.recipeguideapp to javafx.fxml;
     exports com.efs.recipeguideapp;
-    exports com.efs.recipeguideapp.Database;
-    opens com.efs.recipeguideapp.Database to javafx.fxml;
-    exports com.efs.recipeguideapp.Classes;
-    opens com.efs.recipeguideapp.Classes to javafx.fxml;
+    exports com.efs.recipeguideapp.DAO;
+    opens com.efs.recipeguideapp.DAO to javafx.fxml;
+    exports com.efs.recipeguideapp.Entity;
+    opens com.efs.recipeguideapp.Entity to javafx.fxml;
+
 }

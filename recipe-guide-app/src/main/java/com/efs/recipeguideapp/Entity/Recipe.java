@@ -1,19 +1,12 @@
-package com.efs.recipeguideapp.Classes;
-
-import java.util.ArrayList;
+package com.efs.recipeguideapp.Entity;
 
 public class Recipe {
-
 
     private int recipeID;
     private String recipeName;
     private String category;
     private int preparationTime;
     private String instructions;
-
-
-    ArrayList<Recipe> recipeArrayList = new ArrayList<>();
-
 
     public Recipe(int recipeID, String recipeName, String category, int preparationTime, String instructions) {
         this.recipeID = recipeID;
@@ -30,21 +23,7 @@ public class Recipe {
         this.instructions = instructions;
     }
 
-    public Recipe() {}
-
-
-
-
-
-    public void add() { /* implementation */ }
-    public void update() { /* implementation */ }
-    public void delete() { /* implementation */ }
-    public void showDetails() { /* implementation */ }
-
-
-    public int getRecipeID() {
-        return recipeID;
-    }
+    public int getRecipeID() {return recipeID;}
 
     public void setRecipeID(int recipeID) {
         this.recipeID = recipeID;
@@ -80,5 +59,17 @@ public class Recipe {
 
     public void setInstructions(String instructions) {
         this.instructions = instructions;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "recipeID=" + recipeID +
+                ", recipeName='" + recipeName + '\'' +
+                ", category='" + category + '\'' +
+                ", preparationTime=" + preparationTime +
+                ", instructions='" + instructions + '\'' +
+                '}';
     }
 }

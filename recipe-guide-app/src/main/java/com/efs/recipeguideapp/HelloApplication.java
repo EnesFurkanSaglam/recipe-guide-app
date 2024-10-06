@@ -1,18 +1,19 @@
 package com.efs.recipeguideapp;
 
-import com.efs.recipeguideapp.Classes.Recipe;
-import com.efs.recipeguideapp.Database.Database;
+
+import com.efs.recipeguideapp.DAO.RecipeDAO;
+import com.efs.recipeguideapp.Entity.Recipe;
+import com.efs.recipeguideapp.Service.RecipeService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class HelloApplication extends Application {
-
-
 
 
 
@@ -28,22 +29,20 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-        Database database = new Database();
+        RecipeDAO recipeDAO = new RecipeDAO();
+        RecipeService recipeService = new RecipeService(recipeDAO);
 
-        for(Recipe a :database.getAllRecipes()){
+
+        Recipe newRecipe = new Recipe("hmmmmmmmmmmm", "Dinner", 30, "Boil pasta, add sauce.");
+        recipeService.addRecipe(newRecipe);
+
+        List<Recipe> recipes = recipeService.getAllRecipes();
+
+        for (Recipe a : recipes){
             System.out.println(a.getRecipeID()+a.getRecipeName());
         }
 
 
-        Recipe recipe = new Recipe("merhaba","dasda",12,"afaasfas");
-
-        database.addRecipe(recipe);
-
-        for(Recipe a :database.getAllRecipes()){
-            System.out.println(a.getRecipeID()+a.getRecipeName());
-        }
-
-
-       // launch();
+//         launch();
     }
 }
