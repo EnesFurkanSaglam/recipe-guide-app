@@ -13,15 +13,14 @@ public class IngredientDAO {
 
     private DBConnection dbConnection;
 
-    public IngredientDAO(DBConnection dbConnection) {
-        this.dbConnection = dbConnection;
+    public IngredientDAO() {
+        dbConnection = new DBConnection();
     }
-
 
     public List<Ingredient> getAllIngredient() {
 
         List<Ingredient> ingredientList = new ArrayList<>();
-        String sql = "SELECT * FROM ingredient";
+        String sql = "SELECT * FROM ingredients";
 
         try(Connection connection = dbConnection.connect();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -47,7 +46,7 @@ public class IngredientDAO {
 
 
     public void addIngredient(Ingredient ingredient) {
-        String sql = "INSERT INTO ingredient(IngredientName,TotalQuantity,Unit,UnitPrice) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO ingredients (IngredientName,TotalQuantity,Unit,UnitPrice) VALUES (?,?,?,?)";
 
 
         try (Connection connection = dbConnection.connect();
@@ -68,7 +67,7 @@ public class IngredientDAO {
 
     public void updateIngredient(Ingredient ingredient) {
 
-        String sql = "UPDATE recipes SET IngredientName = ?, TotalQuantity = ?, Unit = ?, UnitPrice = ? WHERE IngredientID = ?";
+        String sql = "UPDATE ingredientsd SET IngredientName = ?, TotalQuantity = ?, Unit = ?, UnitPrice = ? WHERE IngredientID = ?";
 
         try (Connection connection = dbConnection.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
