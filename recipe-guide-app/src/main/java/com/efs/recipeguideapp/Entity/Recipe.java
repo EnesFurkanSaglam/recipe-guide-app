@@ -23,7 +23,9 @@ public class Recipe {
         this.instructions = instructions;
     }
 
-    public int getRecipeID() {return recipeID;}
+    public int getRecipeID() {
+        return recipeID;
+    }
 
     public void setRecipeID(int recipeID) {
         this.recipeID = recipeID;

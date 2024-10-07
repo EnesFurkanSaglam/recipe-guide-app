@@ -14,25 +14,6 @@ public class RecipeDAO {
         dbConnection = new DBConnection();
     }
 
-    public void addRecipe(Recipe recipe) {
-        String sql = "INSERT INTO recipes (RecipeName, Category, PreparationTime, Instructions) VALUES (?,?,?,?)";
-
-        try (Connection connection = dbConnection.connect();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-
-            preparedStatement.setString(1, recipe.getRecipeName());
-            preparedStatement.setString(2, recipe.getCategory());
-            preparedStatement.setInt(3, recipe.getPreparationTime());
-            preparedStatement.setString(4, recipe.getInstructions());
-
-            int rowsAffected = preparedStatement.executeUpdate();
-            System.out.println(rowsAffected + " recipe added");
-
-        } catch (SQLException e) {
-            System.out.println("Error adding recipe: " + e.getMessage());
-        }
-    }
-
     public List<Recipe> getAllRecipes() {
         List<Recipe> recipeList = new ArrayList<>();
         String sql = "SELECT * FROM recipes";
@@ -58,6 +39,26 @@ public class RecipeDAO {
 
         return recipeList;
     }
+
+    public void addRecipe(Recipe recipe) {
+        String sql = "INSERT INTO recipes (RecipeName, Category, PreparationTime, Instructions) VALUES (?,?,?,?)";
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, recipe.getRecipeName());
+            preparedStatement.setString(2, recipe.getCategory());
+            preparedStatement.setInt(3, recipe.getPreparationTime());
+            preparedStatement.setString(4, recipe.getInstructions());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println(rowsAffected + " recipe added");
+
+        } catch (SQLException e) {
+            System.out.println("Error adding recipe: " + e.getMessage());
+        }
+    }
+
 
     public void updateRecipe(Recipe recipe) {
         String sql = "UPDATE recipes SET RecipeName = ?, Category = ?, PreparationTime = ?, Instructions = ? WHERE RecipeID = ?";
