@@ -85,24 +85,24 @@ public class RecipeDAO {
     }
 
 
-//    public void deleteRecipe(int recipeID) {
-//        String sql = "DELETE FROM recipes WHERE RecipeID = ?";
-//
-//        try (Connection connection = dbConnection.connect();
-//             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-//
-//            preparedStatement.setInt(1, recipeID);
-//
-//            int rowsAffected = preparedStatement.executeUpdate();
-//            if (rowsAffected > 0) {
-//                System.out.println("Recipe deleted successfully.");
-//            } else {
-//                System.out.println("No recipe found with the given RecipeID.");
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println("Error deleting recipe: " + e.getMessage());
-//        }
-//    }
+    public void deleteRecipe(int recipeID) {
+        String sql = "DELETE FROM recipes WHERE RecipeID = ?";
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, recipeID);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Recipe deleted successfully.");
+            } else {
+                System.out.println("No recipe found with the given RecipeID.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error deleting recipe: " + e.getMessage());
+        }
+    }
 
 }

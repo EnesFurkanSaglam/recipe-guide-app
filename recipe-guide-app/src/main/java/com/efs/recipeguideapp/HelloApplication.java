@@ -3,9 +3,12 @@ package com.efs.recipeguideapp;
 
 import com.efs.recipeguideapp.DAO.IngredientDAO;
 import com.efs.recipeguideapp.DAO.RecipeDAO;
+import com.efs.recipeguideapp.DAO.RecipeIngredientDAO;
 import com.efs.recipeguideapp.Entity.Ingredient;
 import com.efs.recipeguideapp.Entity.Recipe;
+import com.efs.recipeguideapp.Entity.RecipeIngredient;
 import com.efs.recipeguideapp.Service.IngredientService;
+import com.efs.recipeguideapp.Service.RecipeIngredientService;
 import com.efs.recipeguideapp.Service.RecipeService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -32,13 +35,31 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-
-
         RecipeDAO recipeDAO = new RecipeDAO();
-        RecipeService recipeService = new RecipeService(recipeDAO);
-
         IngredientDAO ingredientDAO = new IngredientDAO();
-        IngredientService ingredientService = new IngredientService(ingredientDAO);
+        RecipeIngredientDAO recipeIngredientDAO = new RecipeIngredientDAO();
+
+        RecipeService recipeService = new RecipeService(recipeDAO,recipeIngredientDAO);
+        IngredientService ingredientService = new IngredientService(ingredientDAO,recipeIngredientDAO);
+        RecipeIngredientService recipeIngredientService = new RecipeIngredientService(recipeIngredientDAO);
+
+
+        //RecipeIngredient recipeIngredient = new RecipeIngredient(3,6, 2.5F);
+        //recipeIngredientService.addRecipeIngredient(recipeIngredient);
+
+        //recipeIngredientService.deleteRecipeIngredient(3,3);
+
+        //recipeService.deleteRecipe(1);
+
+        //System.out.println(recipeIngredientService.getAllRecipeIngredients());
+
+
+
+//        RecipeDAO recipeDAO = new RecipeDAO();
+//        RecipeService recipeService = new RecipeService(recipeDAO);
+//
+//        IngredientDAO ingredientDAO = new IngredientDAO();
+//        IngredientService ingredientService = new IngredientService(ingredientDAO);
 
 
 //       ---------List Ingredient---------

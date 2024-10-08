@@ -93,25 +93,25 @@ public class IngredientDAO {
 
 
 
-//    public void deleteIngredient(int ingredientID) {
-//
-//        String sql = "DELETE FROM ingredient WHERE IngredientID = ?";
-//
-//        try (Connection connection = dbConnection.connect();
-//             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-//
-//            preparedStatement.setInt(1, ingredientID);
-//
-//            int rowsAffected = preparedStatement.executeUpdate();
-//            if (rowsAffected > 0) {
-//                System.out.println("Ingredient deleted successfully.");
-//            } else {
-//                System.out.println("No ingredient found with the given IngredientID.");
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println("Error deleting ingredient: " + e.getMessage());
-//        }
-//    }
+    public void deleteIngredient(int ingredientID) {
+
+        String sql = "DELETE FROM ingredient WHERE IngredientID = ?";
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, ingredientID);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Ingredient deleted successfully.");
+            } else {
+                System.out.println("No ingredient found with the given IngredientID.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error deleting ingredient: " + e.getMessage());
+        }
+    }
 
 }

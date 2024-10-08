@@ -13,9 +13,7 @@ public class RecipeIngredient {
         this.ingredientQuantity = ingredientQuantity;
     }
 
-    public RecipeIngredient(int ingredientID, float ingredientQuantity) {
-        this.ingredientID = ingredientID;
-        this.ingredientQuantity = ingredientQuantity;
+    public RecipeIngredient() {
     }
 
     public int getRecipeID() {
