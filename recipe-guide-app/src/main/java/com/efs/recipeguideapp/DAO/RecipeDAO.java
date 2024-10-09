@@ -105,4 +105,35 @@ public class RecipeDAO {
         }
     }
 
+    public Recipe getRecipeByID(int myRecipeID) {
+
+        String sql = "SELECT * FROM recipes WHERE RecipeID = ?";
+        Recipe recipe = null;
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, myRecipeID);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int recipeID = resultSet.getInt("RecipeID");
+                    String recipeName = resultSet.getString("RecipeName");
+                    String category = resultSet.getString("Category");
+                    int preparationTime = resultSet.getInt("PreparationTime");
+                    String instructions = resultSet.getString("Instructions");
+
+                    recipe = new Recipe(recipeID, recipeName, category, preparationTime, instructions);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error fetching recipe: " + e.getMessage());
+        }
+
+        return recipe;
+    }
+
+
+
 }

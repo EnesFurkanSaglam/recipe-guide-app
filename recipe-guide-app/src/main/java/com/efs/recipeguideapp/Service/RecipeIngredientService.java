@@ -1,5 +1,7 @@
 package com.efs.recipeguideapp.Service;
 
+import com.efs.recipeguideapp.DAO.IngredientDAO;
+import com.efs.recipeguideapp.DAO.RecipeDAO;
 import com.efs.recipeguideapp.DAO.RecipeIngredientDAO;
 import com.efs.recipeguideapp.Entity.RecipeIngredient;
 
@@ -8,9 +10,13 @@ import java.util.List;
 public class RecipeIngredientService {
 
     private RecipeIngredientDAO recipeIngredientDAO;
+    private RecipeDAO recipeDAO;
+    private IngredientDAO ingredientDAO;
 
-    public RecipeIngredientService(RecipeIngredientDAO recipeIngredientDAO) {
+    public RecipeIngredientService(RecipeIngredientDAO recipeIngredientDAO,RecipeDAO recipeDAO,IngredientDAO ingredientDAO) {
         this.recipeIngredientDAO = recipeIngredientDAO;
+        this.recipeDAO = recipeDAO;
+        this.ingredientDAO = ingredientDAO;
     }
 
     public List<RecipeIngredient> getAllRecipeIngredients(){
@@ -36,5 +42,13 @@ public class RecipeIngredientService {
     public void deleteRecipeIngredientByIngredientID(int ingredientID){
         recipeIngredientDAO.deleteRecipeIngredientByIngredientID(ingredientID);
     }
+    public List<RecipeIngredient> getRecipeIngredientsByRecipeID(int myRecipeID){
+        return recipeIngredientDAO.getRecipeIngredientsByRecipeID(myRecipeID);
+    }
+
+    public List<RecipeIngredient> getRecipeIngredientsByIngredientID(int myIngredientID){
+        return recipeIngredientDAO.getRecipeIngredientsByIngredientID(myIngredientID);
+    }
+
 
 }

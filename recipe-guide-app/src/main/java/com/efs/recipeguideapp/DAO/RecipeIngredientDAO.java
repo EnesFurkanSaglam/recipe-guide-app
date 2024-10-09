@@ -1,6 +1,5 @@
 package com.efs.recipeguideapp.DAO;
 
-import com.efs.recipeguideapp.Entity.Recipe;
 import com.efs.recipeguideapp.Entity.RecipeIngredient;
 
 import java.sql.Connection;
@@ -152,5 +151,63 @@ public class RecipeIngredientDAO {
         }
 
     }
+
+    public List<RecipeIngredient> getRecipeIngredientsByRecipeID(int myRecipeID) {
+
+        List<RecipeIngredient> recipeIngredientList = new ArrayList<>();
+        String sql = "SELECT * FROM recipeingredients WHERE RecipeID = ?";
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, myRecipeID);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int recipeID = resultSet.getInt("RecipeID");
+                    int ingredientID = resultSet.getInt("IngredientID");
+                    float ingredientQuantity = resultSet.getFloat("IngredientQuantity");
+
+                    RecipeIngredient recipeIngredient = new RecipeIngredient(recipeID, ingredientID, ingredientQuantity);
+                    recipeIngredientList.add(recipeIngredient);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error fetching recipe ingredients: " + e.getMessage());
+        }
+
+        return recipeIngredientList;
+    }
+
+    public List<RecipeIngredient> getRecipeIngredientsByIngredientID(int myIngredientID) {
+
+        List<RecipeIngredient> recipeIngredientList = new ArrayList<>();
+        String sql = "SELECT * FROM recipeingredients WHERE IngredientID = ?";
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, myIngredientID);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int recipeID = resultSet.getInt("RecipeID");
+                    int ingredientID = resultSet.getInt("IngredientID");
+                    float ingredientQuantity = resultSet.getFloat("IngredientQuantity");
+
+                    RecipeIngredient recipeIngredient = new RecipeIngredient(recipeID, ingredientID, ingredientQuantity);
+                    recipeIngredientList.add(recipeIngredient);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error fetching recipe ingredients: " + e.getMessage());
+        }
+
+        return recipeIngredientList;
+    }
+
+
 
 }

@@ -114,4 +114,35 @@ public class IngredientDAO {
         }
     }
 
+
+    public Ingredient getIngredientByID(int myIngredientID) {
+
+        String sql = "SELECT * FROM ingredients WHERE IngredientID = ?";
+        Ingredient ingredient = null;
+
+        try (Connection connection = dbConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, myIngredientID);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int ingredientID = resultSet.getInt("IngredientID");
+                    String ingredientName = resultSet.getString("IngredientName");
+                    String totalQuantity = resultSet.getString("TotalQuantity");
+                    String unit = resultSet.getString("Unit");
+                    double unitPrice = resultSet.getDouble("UnitPrice");
+
+                    ingredient = new Ingredient(ingredientID, ingredientName, totalQuantity, unit, unitPrice);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error fetching ingredient: " + e.getMessage());
+        }
+
+        return ingredient;
+    }
+
+
 }

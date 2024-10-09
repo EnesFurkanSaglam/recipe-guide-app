@@ -11,11 +11,13 @@ public class IngredientService {
 
     private IngredientDAO ingredientDAO;
     private RecipeIngredientDAO recipeIngredientDAO;
+    private RecipeDAO recipeDAO;
 
 
-    public IngredientService(IngredientDAO ingredientDAO,RecipeIngredientDAO recipeIngredientDAO) {
+    public IngredientService(IngredientDAO ingredientDAO,RecipeIngredientDAO recipeIngredientDAO,RecipeDAO recipeDAO) {
         this.ingredientDAO = ingredientDAO;
         this.recipeIngredientDAO = recipeIngredientDAO;
+        this.recipeDAO = recipeDAO;
     }
 
     public List<Ingredient> getAllIngredient() {
@@ -39,7 +41,10 @@ public class IngredientService {
         //secondly we delete from recipe table
         ingredientDAO.deleteIngredient(ingredientID);
 
+    }
 
+    public Ingredient getIngredientByID(int myIngredientID){
+        return ingredientDAO.getIngredientByID(myIngredientID);
     }
 
 
