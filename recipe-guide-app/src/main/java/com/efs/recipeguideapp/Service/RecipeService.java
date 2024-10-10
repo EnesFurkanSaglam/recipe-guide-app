@@ -7,7 +7,8 @@ import com.efs.recipeguideapp.Entity.Ingredient;
 import com.efs.recipeguideapp.Entity.Recipe;
 import com.efs.recipeguideapp.Entity.RecipeIngredient;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class RecipeService {
@@ -48,6 +49,7 @@ public class RecipeService {
     }
 
 
+
     public double calculateRecipePrice(int recipeID) {
         double price = 0;
 
@@ -62,8 +64,11 @@ public class RecipeService {
                 }
             }
         }
-        return price;
+
+        BigDecimal roundedPrice = BigDecimal.valueOf(price).setScale(2, RoundingMode.HALF_UP);
+        return roundedPrice.doubleValue();
     }
+
 
 
 }

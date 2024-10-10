@@ -65,7 +65,7 @@ public class RecipeIngredientDAO {
     }
 
 
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     public void updateIngredientQuantity(RecipeIngredient recipeIngredient){
         String sql = "UPDATE recipeingredients SET IngredientQuantity = ? WHERE RecipeID = ? AND IngredientID = ?";
 

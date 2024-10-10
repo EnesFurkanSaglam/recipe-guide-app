@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.efs.recipeguideapp.GUI.RecipeDetail" prefHeight="400.0" prefWidth="600.0">
+
+    <Button fx:id="backButton" text="Back" onAction="#goBack" />
+    <Label fx:id="recipeNameLabel" layoutX="100" layoutY="50" text="Recipe Name"/>
+    <Label fx:id="recipeCategoryLabel" layoutX="100" layoutY="100" text="Category"/>
+    <Label fx:id="recipePreparationTimeLabel" layoutX="100" layoutY="150" text="Preparation Time"/>
+    <Label fx:id="recipeInstructionsLabel" layoutX="100" layoutY="200" text="Instructions"/>
+    <Label fx:id="recipeIngredientsLabel" layoutX="100" layoutY="250" text="Ingredients"/>
+    <Button fx:id="addDeleteIngredientButton" layoutX="100" layoutY="300" text="Add - Delete Ingredient" onAction="#addDeleteIngredient" />
+
+</AnchorPane>
