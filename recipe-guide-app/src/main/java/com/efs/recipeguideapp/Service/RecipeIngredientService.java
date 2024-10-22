@@ -13,40 +13,41 @@ public class RecipeIngredientService {
     private RecipeDAO recipeDAO;
     private IngredientDAO ingredientDAO;
 
-    public RecipeIngredientService(RecipeIngredientDAO recipeIngredientDAO,RecipeDAO recipeDAO,IngredientDAO ingredientDAO) {
+    public RecipeIngredientService(RecipeIngredientDAO recipeIngredientDAO, RecipeDAO recipeDAO, IngredientDAO ingredientDAO) {
         this.recipeIngredientDAO = recipeIngredientDAO;
         this.recipeDAO = recipeDAO;
         this.ingredientDAO = ingredientDAO;
     }
 
-    public List<RecipeIngredient> getAllRecipeIngredients(){
+    public List<RecipeIngredient> getAllRecipeIngredients() {
         return recipeIngredientDAO.getAllRecipeIngredients();
     }
 
-    public void addRecipeIngredient(RecipeIngredient recipeIngredient){
+    public void addRecipeIngredient(RecipeIngredient recipeIngredient) {
         recipeIngredientDAO.addRecipeIngredient(recipeIngredient);
     }
 
-    public void updateIngredientQuantity(RecipeIngredient recipeIngredient){
+    public void updateIngredientQuantity(RecipeIngredient recipeIngredient) {
         recipeIngredientDAO.updateIngredientQuantity(recipeIngredient);
     }
 
-    public void deleteRecipeIngredient(int recipeID,int ingredientID){
-        recipeIngredientDAO.deleteRecipeIngredient(recipeID,ingredientID);
+    public void deleteRecipeIngredient(int recipeID, int ingredientID) {
+        recipeIngredientDAO.deleteRecipeIngredient(recipeID, ingredientID);
     }
 
-    public void deleteRecipeIngredientByRecipeID(int recipeID){
+    public void deleteRecipeIngredientByRecipeID(int recipeID) {
         recipeIngredientDAO.deleteRecipeIngredientByRecipeID(recipeID);
     }
 
-    public void deleteRecipeIngredientByIngredientID(int ingredientID){
+    public void deleteRecipeIngredientByIngredientID(int ingredientID) {
         recipeIngredientDAO.deleteRecipeIngredientByIngredientID(ingredientID);
     }
-    public List<RecipeIngredient> getRecipeIngredientsByRecipeID(int myRecipeID){
+
+    public List<RecipeIngredient> getRecipeIngredientsByRecipeID(int myRecipeID) {
         return recipeIngredientDAO.getRecipeIngredientsByRecipeID(myRecipeID);
     }
 
-    public List<RecipeIngredient> getRecipeIngredientsByIngredientID(int myIngredientID){
+    public List<RecipeIngredient> getRecipeIngredientsByIngredientID(int myIngredientID) {
         return recipeIngredientDAO.getRecipeIngredientsByIngredientID(myIngredientID);
     }
 

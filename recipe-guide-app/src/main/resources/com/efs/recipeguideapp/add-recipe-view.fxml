@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.efs.recipeguideapp.GUI.AddRecipe">
+   <ImageView fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@add-recipe.jpg" />
+      </image>
+   </ImageView>
+
+    <Button fx:id="backButton" layoutX="10" layoutY="10" onAction="#goBack" text="Back" />
+
+    <Label fx:id="recipeNameLabel" layoutX="300" layoutY="100" text="Name:" />
+    <TextField fx:id="recipeNameLabelTextField" alignment="TOP_CENTER" layoutX="400" layoutY="95" maxWidth="275.0" prefWidth="275.0" promptText="Type.." />
+
+    <Label fx:id="recipeCategoryLabel" layoutX="300" layoutY="200" text="Category: " />
+    <TextField fx:id="recipeCategoryTextField" alignment="TOP_CENTER" layoutX="400" layoutY="195" maxWidth="275.0" prefWidth="275.0" promptText="Type.." />
+
+    <Label fx:id="recipePreparationTimeLabel" layoutX="300" layoutY="300" text="PreparationTime: " />
+    <TextField fx:id="recipePreparationTimeTextField" alignment="TOP_CENTER" layoutX="400" layoutY="295" maxWidth="275.0" prefWidth="275.0" promptText="Type.." />
+
+    <Label fx:id="recipeInstructionsLabel" layoutX="300" layoutY="400" text="Instructions: " />
+    <TextField fx:id="recipeInstructionsTextField" alignment="TOP_CENTER" layoutX="400" layoutY="395" maxWidth="275.0" prefWidth="275.0" promptText="Type.." />
+
+
+    <Button layoutX="700" layoutY="500" onAction="#addRecipe" prefWidth="100.0" text="Add" />
+
+</AnchorPane>

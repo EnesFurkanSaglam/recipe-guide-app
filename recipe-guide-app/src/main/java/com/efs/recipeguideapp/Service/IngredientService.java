@@ -14,7 +14,7 @@ public class IngredientService {
     private RecipeDAO recipeDAO;
 
 
-    public IngredientService(IngredientDAO ingredientDAO,RecipeIngredientDAO recipeIngredientDAO,RecipeDAO recipeDAO) {
+    public IngredientService(IngredientDAO ingredientDAO, RecipeIngredientDAO recipeIngredientDAO, RecipeDAO recipeDAO) {
         this.ingredientDAO = ingredientDAO;
         this.recipeIngredientDAO = recipeIngredientDAO;
         this.recipeDAO = recipeDAO;
@@ -35,15 +35,15 @@ public class IngredientService {
 
     public void deleteIngredient(int ingredientID) {
 
-        //firstly we should delete from recipe ingredients table
+
         recipeIngredientDAO.deleteRecipeIngredientByIngredientID(ingredientID);
 
-        //secondly we delete from recipe table
+
         ingredientDAO.deleteIngredient(ingredientID);
 
     }
 
-    public Ingredient getIngredientByID(int myIngredientID){
+    public Ingredient getIngredientByID(int myIngredientID) {
         return ingredientDAO.getIngredientByID(myIngredientID);
     }
 

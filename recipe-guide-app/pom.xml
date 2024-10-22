@@ -26,6 +26,13 @@
     </dependency>
 
     <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-media</artifactId>
+      <version>22</version> <!-- Versiyon numarasını kendi JavaFX sürümüne göre ayarla -->
+    </dependency>
+
+
+    <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.33</version>

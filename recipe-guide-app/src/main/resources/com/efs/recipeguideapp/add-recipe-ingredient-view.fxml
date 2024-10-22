@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.efs.recipeguideapp.GUI.AddRecipeIngredient">
+   <ImageView fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@add-recipe-ingredient.jpg" />
+      </image>
+   </ImageView>
+   <Label layoutX="196.0" layoutY="174.0" prefHeight="39.0" prefWidth="242.0" text="My Ingredients" textAlignment="CENTER">
+      <font>
+         <Font name="System Bold" size="27.0" />
+      </font>
+   </Label>
+
+
+    <Button fx:id="backButton" layoutX="10" layoutY="10" onAction="#goBack" text="Back" />
+
+    <ListView fx:id="ingredientListView" layoutX="151.0" layoutY="244.0" maxWidth="300.0" prefHeight="200.0" prefWidth="300.0" />
+    <Label fx:id="selectedIngredientLabel" layoutX="508.0" layoutY="308.0" text="Name:" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font></Label>
+
+    <TextField fx:id="ingredientQuantityTextField" alignment="TOP_CENTER" layoutX="553.0" layoutY="353.0" maxWidth="100.0" prefHeight="25.0" prefWidth="35.0" />
+    <Label fx:id="unitLabel" layoutX="605.0" layoutY="351.0" text="unit" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font></Label>
+
+    <Button layoutX="618.0" layoutY="408.0" onAction="#addRecipeIngredient" text="Add Recipe Ingredient" />
+
+</AnchorPane>

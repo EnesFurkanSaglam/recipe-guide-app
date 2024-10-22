@@ -1,0 +1,48 @@
+CREATE TABLE Recipes (
+    RecipeID INT PRIMARY KEY AUTO_INCREMENT,
+    RecipeName VARCHAR(255) NOT NULL,
+    Category VARCHAR(100) NOT NULL,
+    PreparationTime INT NOT NULL,  -- in minutes
+    Instructions TEXT NOT NULL
+);
+CREATE TABLE Ingredients (
+    IngredientID INT PRIMARY KEY AUTO_INCREMENT,
+    IngredientName VARCHAR(255) NOT NULL,
+    TotalQuantity VARCHAR(50) NOT NULL,  -- e.g., "5 kg"
+    Unit VARCHAR(50) NOT NULL,           -- e.g., "kg", "liters", "grams"
+    UnitPrice DECIMAL(10, 2) NOT NULL    -- price per unit
+);
+CREATE TABLE RecipeIngredients (
+    RecipeID INT,
+    IngredientID INT,
+    IngredientQuantity FLOAT NOT NULL,  -- Amount of the ingredient needed for the recipe
+    PRIMARY KEY (RecipeID, IngredientID),
+    FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID),
+    FOREIGN KEY (IngredientID) REFERENCES Ingredients(IngredientID)
+);
+
+
+
+
+
+
+
+-- Güvenli güncelleme modunu kapat
+SET SQL_SAFE_UPDATES = 0;
+
+-- RecipeIngredients tablosundaki tüm kayıtları sil
+DELETE FROM RecipeIngredients;
+
+-- Ingredients tablosundaki tüm kayıtları sil
+DELETE FROM Ingredients;
+
+-- Recipes tablosundaki tüm kayıtları sil
+DELETE FROM Recipes;
+
+-- Otomatik artan ID'leri sıfırla
+ALTER TABLE RecipeIngredients AUTO_INCREMENT = 1;
+ALTER TABLE Ingredients AUTO_INCREMENT = 1;
+ALTER TABLE Recipes AUTO_INCREMENT = 1;
+
+-- Güvenli güncelleme modunu tekrar aç
+SET SQL_SAFE_UPDATES = 1;

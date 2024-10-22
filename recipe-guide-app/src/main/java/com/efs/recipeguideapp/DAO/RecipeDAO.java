@@ -1,6 +1,7 @@
 package com.efs.recipeguideapp.DAO;
 
 import com.efs.recipeguideapp.Entity.Recipe;
+import com.efs.recipeguideapp.GUI.AlertUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class RecipeDAO {
             preparedStatement.setString(4, recipe.getInstructions());
 
             int rowsAffected = preparedStatement.executeUpdate();
+            AlertUtils.showAlert("Info", rowsAffected + " recipe added");
             System.out.println(rowsAffected + " recipe added");
 
         } catch (SQLException e) {
@@ -74,6 +76,7 @@ public class RecipeDAO {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
+                AlertUtils.showAlert("Info", "Recipe updated successfully.");
                 System.out.println("Recipe updated successfully.");
             } else {
                 System.out.println("No recipe found with the given RecipeID.");
@@ -133,7 +136,6 @@ public class RecipeDAO {
 
         return recipe;
     }
-
 
 
 }

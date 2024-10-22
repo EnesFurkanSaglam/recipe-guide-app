@@ -1,6 +1,8 @@
 package com.efs.recipeguideapp.DAO;
 
 import com.efs.recipeguideapp.Entity.RecipeIngredient;
+import com.efs.recipeguideapp.GUI.AlertUtils;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,9 +21,9 @@ public class RecipeIngredientDAO {
     }
 
 
-    public List<RecipeIngredient> getAllRecipeIngredients(){
+    public List<RecipeIngredient> getAllRecipeIngredients() {
 
-        List<RecipeIngredient> recipeIngredientList =new ArrayList<>();
+        List<RecipeIngredient> recipeIngredientList = new ArrayList<>();
         String sql = "SELECT * FROM recipeingredients";
 
         try (Connection connection = dbConnection.connect();
@@ -33,7 +35,7 @@ public class RecipeIngredientDAO {
                 int ingredientID = resultSet.getInt("IngredientID");
                 float ingredientQuantity = resultSet.getFloat("IngredientQuantity");
 
-                RecipeIngredient recipeIngredient = new RecipeIngredient(recipeID,ingredientID,ingredientQuantity);
+                RecipeIngredient recipeIngredient = new RecipeIngredient(recipeID, ingredientID, ingredientQuantity);
                 recipeIngredientList.add(recipeIngredient);
             }
 
@@ -45,7 +47,7 @@ public class RecipeIngredientDAO {
     }
 
 
-    public void addRecipeIngredient(RecipeIngredient recipeIngredient){
+    public void addRecipeIngredient(RecipeIngredient recipeIngredient) {
         String sql = "INSERT INTO recipeingredients (RecipeID,IngredientID,IngredientQuantity) VALUES (?,?,?)";
 
         try (Connection connection = dbConnection.connect();
@@ -58,6 +60,7 @@ public class RecipeIngredientDAO {
 
             int rowsAffected = preparedStatement.executeUpdate();
             System.out.println(rowsAffected + " recipe ingredient added");
+            AlertUtils.showAlert("Info", rowsAffected + " recipe ingredient added");
 
         } catch (SQLException e) {
             System.out.println("Error adding recipe ingredient: " + e.getMessage());
@@ -65,8 +68,7 @@ public class RecipeIngredientDAO {
     }
 
 
-
-    public void updateIngredientQuantity(RecipeIngredient recipeIngredient){
+    public void updateIngredientQuantity(RecipeIngredient recipeIngredient) {
         String sql = "UPDATE recipeingredients SET IngredientQuantity = ? WHERE RecipeID = ? AND IngredientID = ?";
 
         try (Connection connection = dbConnection.connect();
@@ -78,6 +80,7 @@ public class RecipeIngredientDAO {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
+                AlertUtils.showAlert("Info", "Ingredient Quantity updated successfully.");
                 System.out.println("Ingredient Quantity updated successfully.");
             } else {
                 System.out.println("No recipe ingredient found with the given RecipeID and IngredientID.");
@@ -89,17 +92,18 @@ public class RecipeIngredientDAO {
 
     }
 
-    public void deleteRecipeIngredient(int recipeID,int ingredientID){
+    public void deleteRecipeIngredient(int recipeID, int ingredientID) {
         String sql = "DELETE FROM recipeingredients WHERE RecipeID = ? AND IngredientID = ?";
 
         try (Connection connection = dbConnection.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setInt(1, recipeID);
-            preparedStatement.setInt(2,ingredientID);
+            preparedStatement.setInt(2, ingredientID);
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
+                AlertUtils.showAlert("Info", "Recipe Ingredient deleted successfully.");
                 System.out.println("Recipe Ingredient deleted successfully.");
             } else {
                 System.out.println("No Recipe Ingredient found with the given RecipeID and IngredientID.");
@@ -110,7 +114,7 @@ public class RecipeIngredientDAO {
         }
     }
 
-    public void deleteRecipeIngredientByRecipeID(int recipeID){
+    public void deleteRecipeIngredientByRecipeID(int recipeID) {
         String sql = "DELETE FROM recipeingredients WHERE RecipeID = ?";
 
         try (Connection connection = dbConnection.connect();
@@ -120,6 +124,7 @@ public class RecipeIngredientDAO {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
+                AlertUtils.showAlert("Info", "Recipe Ingredient(s) deleted successfully.");
                 System.out.println("Recipe Ingredient(s) deleted successfully.");
             } else {
                 System.out.println("No Recipe Ingredient(s) found with the given RecipeID.");
@@ -130,7 +135,7 @@ public class RecipeIngredientDAO {
         }
     }
 
-    public void deleteRecipeIngredientByIngredientID(int ingredientID){
+    public void deleteRecipeIngredientByIngredientID(int ingredientID) {
 
         String sql = "DELETE FROM recipeingredients WHERE IngredientID = ?";
 
@@ -141,6 +146,7 @@ public class RecipeIngredientDAO {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
+                AlertUtils.showAlert("Info", "Recipe Ingredient(s) deleted successfully.");
                 System.out.println("Recipe Ingredient(s) deleted successfully.");
             } else {
                 System.out.println("No Recipe Ingredient(s) found with the given IngredientID.");
@@ -207,7 +213,6 @@ public class RecipeIngredientDAO {
 
         return recipeIngredientList;
     }
-
 
 
 }

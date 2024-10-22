@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.efs.recipeguideapp.GUI.MainPage">
-
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-  </padding>
-
-
-
-  <TextField fx:id="textFieldSearch" alignment="TOP_CENTER" maxWidth="500.0" onKeyReleased="#searchRecipe" prefWidth="500.0" promptText="Search Recipe..." />
-
-
-  <ListView fx:id="listViewRecipe" prefHeight="200.0" prefWidth="500.0" maxWidth="500.0" />
-
-  <Button onAction="#addRecipe" prefWidth="100.0" text="Add Recipe" layoutX="300.0" />
-  <Button onAction="#addRecipe" prefWidth="100.0" text="I am feeling lucky" />
-  <Button onAction="#showMyIngredients" prefWidth="100.0" text="My Ingredients" />
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.efs.recipeguideapp.GUI.MainPage">
+   <ImageView fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@main-page.jpg" />
+      </image>
+   </ImageView>
 
 
+  <TextField fx:id="textFieldSearch" alignment="TOP_CENTER" layoutX="351.0" layoutY="42.0" maxWidth="300.0" onKeyReleased="#searchRecipe" prefWidth="300.0" promptText="Search Recipe..." styleClass="search-field" />
+
+  <ListView fx:id="listViewRecipe" layoutX="200.0" layoutY="113.0" maxWidth="601.0" prefHeight="262.0" prefWidth="601.0" styleClass="recipe-list" />
+
+  <Button layoutX="200" layoutY="400" onAction="#SortByPreparationTime" prefWidth="200.0" styleClass="action-button" text="Sort By Preparation Time " />
+
+  <Button layoutX="600" layoutY="400" onAction="#SortByCost" prefWidth="200.0" styleClass="action-button" text="Sort By Cost " />
 
 
 
 
-</VBox>
+
+
+  <Button layoutX="125" layoutY="450" onAction="#addRecipe" prefWidth="150.0" styleClass="action-button" text="Add Recipe" />
+
+  <Button layoutX="400" layoutY="450" onAction="#recipeSuggestion" prefWidth="200.0" styleClass="action-button" text="What can I do... sometimes" />
+
+  <Button layoutX="725" layoutY="450" onAction="#showMyIngredients" prefWidth="150.0" styleClass="action-button" text="My Ingredients" />
+
+</AnchorPane>

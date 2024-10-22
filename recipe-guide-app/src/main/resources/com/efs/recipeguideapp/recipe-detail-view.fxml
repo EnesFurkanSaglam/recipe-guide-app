@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.efs.recipeguideapp.GUI.RecipeDetail" prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.efs.recipeguideapp.GUI.RecipeDetail">
+   <ImageView fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@recipe-detail.jpg" />
+      </image>
+   </ImageView>
 
-    <Button fx:id="backButton" text="Back" onAction="#goBack" />
-    <Label fx:id="recipeNameLabel" layoutX="100" layoutY="50" text="Recipe Name"/>
-    <Label fx:id="recipeCategoryLabel" layoutX="100" layoutY="100" text="Category"/>
-    <Label fx:id="recipePreparationTimeLabel" layoutX="100" layoutY="150" text="Preparation Time"/>
-    <Label fx:id="recipeInstructionsLabel" layoutX="100" layoutY="200" text="Instructions"/>
-    <Label fx:id="recipeIngredientsLabel" layoutX="100" layoutY="250" text="Ingredients"/>
-    <Button fx:id="addDeleteIngredientButton" layoutX="100" layoutY="300" text="Add - Delete Ingredient" onAction="#addDeleteIngredient" />
+
+    <Button fx:id="backButton" layoutX="10" layoutY="10" onAction="#goBack" text="Back" />
+
+    <Label fx:id="recipeNameLabel" layoutX="315.0" layoutY="50.0" text="Recipe Name" />
+
+    <Label fx:id="recipeCategoryLabel" layoutX="700" layoutY="120" text="Category" />
+    <Label fx:id="recipePreparationTimeLabel" layoutX="700" layoutY="150" text="Preparation Time" />
+
+    <Label fx:id="instructionsLabel" layoutX="650" layoutY="250" text="INSTRUCTIONS: " />
+    <Label fx:id="recipeInstructionsLabel" layoutX="600" layoutY="300" maxWidth="300" text="Instructions" wrapText="true" />
+
+
+    <Label fx:id="ingredientsLabel" layoutX="120" layoutY="150" text="INGREDIENTS: " />
+    <ListView fx:id="recipeIngredientsListView" layoutX="99.0" layoutY="199.0" maxHeight="120.0" maxWidth="200.0" prefHeight="120.0" prefWidth="200.0" />
+
+    <Button layoutX="100.0" layoutY="369.0" maxWidth="150.0" onAction="#addIngredient" prefWidth="150.0" text="Add Ingredients" />
+    <Button layoutX="100.0" layoutY="406.0" maxWidth="150.0" onAction="#deleteRecipe" prefWidth="150.0" text="Delete Recipe" />
+    <Button layoutX="100.0" layoutY="446.0" maxWidth="150.0" onAction="#makeRecipe" prefWidth="150.0" text="Make Recipe" />
+
 
 </AnchorPane>

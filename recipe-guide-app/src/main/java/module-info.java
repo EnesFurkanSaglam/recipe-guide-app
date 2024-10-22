@@ -2,6 +2,7 @@ module com.efs.recipeguideapp {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.desktop;
 
 
     opens com.efs.recipeguideapp to javafx.fxml;
