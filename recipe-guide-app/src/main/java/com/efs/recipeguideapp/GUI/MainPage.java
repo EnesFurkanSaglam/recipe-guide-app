@@ -142,7 +142,6 @@ public class MainPage {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/efs/recipeguideapp/show-ingredients-view.fxml"));
             Parent root = loader.load();
 
-
             previousRoot = textFieldSearch.getScene().getRoot();
             ShowIngredients controller = loader.getController();
             controller.setMainPage(this);
@@ -183,9 +182,7 @@ public class MainPage {
     private void SortByPreparationTime() {
         List<Recipe> recipeArrayList = recipeService.getAllRecipes();
 
-
         recipeArrayList.sort((r1, r2) -> Integer.compare(r1.getPreparationTime(), r2.getPreparationTime()));
-
 
         ObservableList<Recipe> sortedRecipes = FXCollections.observableArrayList(recipeArrayList);
         listViewRecipe.setItems(sortedRecipes);

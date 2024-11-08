@@ -27,22 +27,22 @@ CREATE TABLE RecipeIngredients (
 
 
 
--- Güvenli güncelleme modunu kapat
+-- Disable safe update mode
 SET SQL_SAFE_UPDATES = 0;
 
--- RecipeIngredients tablosundaki tüm kayıtları sil
+-- Delete all records from the RecipeIngredients table
 DELETE FROM RecipeIngredients;
 
--- Ingredients tablosundaki tüm kayıtları sil
+-- Delete all records from the Ingredients table
 DELETE FROM Ingredients;
 
--- Recipes tablosundaki tüm kayıtları sil
+-- Delete all records from the Recipes table
 DELETE FROM Recipes;
 
--- Otomatik artan ID'leri sıfırla
+-- Reset auto-increment IDs
 ALTER TABLE RecipeIngredients AUTO_INCREMENT = 1;
 ALTER TABLE Ingredients AUTO_INCREMENT = 1;
 ALTER TABLE Recipes AUTO_INCREMENT = 1;
 
--- Güvenli güncelleme modunu tekrar aç
+-- Re-enable safe update mode
 SET SQL_SAFE_UPDATES = 1;

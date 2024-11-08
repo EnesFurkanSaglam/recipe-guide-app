@@ -84,6 +84,7 @@ public class RecipeDAO {
 
         } catch (SQLException e) {
             System.out.println("Error updating recipe: " + e.getMessage());
+
         }
     }
 
